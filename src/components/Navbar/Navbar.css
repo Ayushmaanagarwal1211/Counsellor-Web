@@ -114,13 +114,7 @@
   text-decoration: none;
 }
 
-#dark .profile_btn {
-  color: white;
-}
 
-#dark .profile_btn:hover {
-  background-color: var(--btnColor);
-}
 
 .profile_btn:hover {
   background-color: #050A30;

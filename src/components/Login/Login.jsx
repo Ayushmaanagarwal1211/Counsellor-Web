@@ -15,7 +15,7 @@ import Footer from "../Footer/Footer";
 import { ToastContainer, toast } from 'react-toastify';
 import { Switch } from 'antd';
 import { ThemeContext } from "../../App";
-
+import Tilt from 'react-parallax-tilt';
 export default function Login() {
   const [error, setError] = useState({});
   const [passwordType, setPasswordType] = useState("password");
@@ -274,7 +274,10 @@ export default function Login() {
         </div>
            {/* This is the left side of the login page   */}
            <div className="left">
+            <Tilt>
+
            <img src={meeting2} alt="meeting" />
+            </Tilt>
           {/* <p className="left-text">Still Confused with College Choice?</p> */}
         </div>
       </div>
