@@ -173,7 +173,7 @@ const Contact = () => {
           <input type="text" placeholder="Name"
             required
             name='name'
-            style={{ outline: "1px solid black", fontSize: "20px" }}
+            style={{  fontSize: "20px" }}
           />
         
       </div>
@@ -189,7 +189,7 @@ const Contact = () => {
             placeholder="Email:"
             name='email'
             required
-            style={{ outline: "1px solid black", fontSize: "20px" }}
+            style={{ fontSize: "20px" }}
           />
         
       </div>
@@ -199,7 +199,7 @@ const Contact = () => {
       class="cform-item">
         <div 
         className="search1 search2">
-        <textarea id='m-textarea'   style={{ outline: "1px solid black", fontSize: "20px" }} className='ctextarea' placeholder='Message :' class="" name="feedback" required/>
+        <textarea id='m-textarea'   style={{  fontSize: "20px" }} className='ctextarea' placeholder='Message :' class="" name="feedback" required/>
       
         
       </div>
