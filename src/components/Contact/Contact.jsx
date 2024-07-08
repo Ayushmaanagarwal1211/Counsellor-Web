@@ -12,6 +12,9 @@ import Logo from "../../assets/logo.webp";
 
 const Contact = () => {
     const navigate = useNavigate();
+  let name=useRef()
+  let email=useRef()
+  let message=useRef()
 
   let form=useRef()
     useEffect(() => {
@@ -23,16 +26,17 @@ const Contact = () => {
         }
       });
     }, []);
-    function handleSubmit(e){
+   async  function handleSubmit(e){
       e.preventDefault();
       let params={
-        name:form.current.name.value,
-        email:form.current.email.value,
-        feedback:form.current.feedback.value
+        name:name.current.value,
+        email:email.current.value,
+        feedback:message.current.value
       }
-      emailjs.send('service_kszura2',"template_u8shl9d",params ,{
+     await  emailjs.send('service_kszura2',"template_u8shl9d",params ,{
         publicKey:"rSYpY_RsF76o4MgcA",
       })
+      console.log('sdsdsd')
     }
     const handleSignOut = () => {
       signOut(auth)
@@ -173,6 +177,7 @@ const Contact = () => {
           <input type="text" placeholder="Name"
             required
             name='name'
+            ref={name}
             style={{  fontSize: "20px" }}
           />
         
@@ -188,6 +193,7 @@ const Contact = () => {
             type="text"
             placeholder="Email:"
             name='email'
+            ref={email}
             required
             style={{ fontSize: "20px" }}
           />
@@ -199,7 +205,7 @@ const Contact = () => {
       class="cform-item">
         <div 
         className="search1 search2">
-        <textarea id='m-textarea'   style={{  fontSize: "20px" }} className='ctextarea' placeholder='Message :' class="" name="feedback" required/>
+        <textarea id='m-textarea' ref={message}  style={{  fontSize: "20px" }} className='ctextarea' placeholder='Message :' class="" name="feedback" required/>
       
         
       </div>
