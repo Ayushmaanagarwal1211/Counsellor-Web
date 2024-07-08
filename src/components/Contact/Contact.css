@@ -6,6 +6,114 @@
   margin: 0; 
   box-sizing: border-box;
 } */
+ .search1{
+  width: 100% !important;
+ }
+ .search2{
+  height: 137px !important;
+  padding-top: 0px;
+ }
+ .search1 input::placeholder{
+  color: black !important;
+ }
+ textarea::placeholder{
+  color: black !important;
+ }
+ textarea{
+  border-radius: 10px !important;
+ }
+.search1 input {
+  width: 100% !important;
+  height: 70px;
+  border-radius: 10px !important;
+  background-color: #5CB6F9;
+  appearance: none;
+  border: none;
+  font-size: 25px;
+  font-family: 'ABeeZee';
+  color: #F4F6FC; 
+}
+.search1 input::placeholder {
+  color: white;
+}
+#dark .search1 input::placeholder{
+  color: black !important;
+}
+#dark .search1 input {
+  background-color: transparent;
+  color: black !important;
+  border: 1px solid black;
+}
+.search1 input,.search2 textarea{
+  color: black ;
+}
+.search1 {
+  width: 25vw;
+  background-color: #5CB6F9;
+  padding: 5px;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+}
+#dark .search1 {
+  background-color: #3c38b9;
+}
+ .contact-page h2 , .contact-page .clink{
+  color: #12229d;
+ }
+ .contact-box .contact-clinks, .contact-box .contact-form-wrapper{
+  background-color: white !important;
+ }
+ .contact-box .contact-clinks{
+  border-right: solid black 2px;
+ }
+.click-btn3 {
+  background-color: #12229d !important;
+  align-items: center !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  color: #FFFFFF !important;
+  display: flex !important;
+  font-family: Phantomsans, sans-serif !important;
+  font-size: 18px !important;
+  justify-content: center !important;
+  line-height: 1em !important;
+  max-width: 100% !important;
+  min-width: 140px !important;
+  padding: 3px !important;
+  text-decoration: none !important;
+  user-select: none !important;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+  padding: 15px !important;
+  top: 40px;
+  transition: all .3s;
+ }
+ 
+.click-btn3:hover{
+  background-color: black !important;
+}
+/* .contact-clinks h2{
+  color: #12229d !important;
+} */
+.contact-box input ,.contact-box textarea{
+  background-color: #addcf2 
+  !important;
+}
+#dark  .click-btn3 {
+  background-color: black !important;
+  border: white solid 1px !important;
+}
+
+#dark .click-btn3:hover {
+  background-color: rgb(37, 37, 37) !important;
+}
 
 .contact-page {
   background-color: #CAE7FE;
@@ -66,9 +174,7 @@
     radial-gradient(
       circle at 20% max(78%, 350px), #263a53 0 7%, transparent 7.2%
     ), 
-    radial-gradient(
-      circle at 0% 0%, #263a53 0 40%, transparent 40.2%
-    ), 
+   
     #1f2e43;
   border-radius: 10px 0 0 10px;
 }

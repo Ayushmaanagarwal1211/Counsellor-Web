@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState ,useCallback} from 'react';
 import { signOut} from "firebase/auth";
 import { auth } from "../../firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -8,8 +8,11 @@ import './Contact.css'
 import emailjs from '@emailjs/browser';
 import { FaLinkedin,FaGithub} from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import Logo from "../../assets/logo.webp";
+
 const Contact = () => {
     const navigate = useNavigate();
+
   let form=useRef()
     useEffect(() => {
       auth.onAuthStateChanged((user) => {
@@ -46,9 +49,56 @@ const Contact = () => {
     const toggleMenu = () => {
       setMenuOpen(!menuOpen);
     };
+    const [fix, setFix] = useState(false);
+
+  const setFixed = useCallback(() => {
+    if (window.scrollY > 0) {
+      setFix(true);
+    } else {
+      setFix(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", setFixed);
+    return () => {
+      window.removeEventListener("scroll", setFixed);
+    };
+  }, [setFixed]);
+
   return (
     <main>
-      <Navbar/>
+    <nav className={`navbar ${fix ? "fixed" : ""}`}>
+        <div className="logo">
+          <img src={Logo} alt="Logo" />
+        </div>
+        <div className={`menu ${menuOpen ? "show" : ""}`}>
+          <ul>
+            <li>
+              <a href="/topuniversities">Top Universities</a>
+            </li>
+            <li>
+              <a href="/jobs">Jobs</a>
+            </li>
+            <li>
+              <a href="/courses">Courses</a>
+            </li>
+            <li>
+              <a href="/careersupport">Career Support</a>
+            </li>
+            <li className="dot">
+              <a href="error">•</a>
+            </li>
+         
+            <li>
+              <a href="./profile">
+                <button className="profile_btn">Profile</button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+      </nav>
         {/* <nav className="navbar">
           <div className="logo">
             <img src={Logo} alt="Logo" />
@@ -93,18 +143,42 @@ const Contact = () => {
     <div class="contact-form-wrapper">
       <form id='form' ref={form}>
         <div class="cform-item">
-          <input className='cinput' type="text" name="name" required/>
-          <label className='clabel'>Name:</label>
-        </div>
-        <div class="cform-item">
-          <input className='cinput' type="text" name="email" required/>
-          <label className='clabel'>Email:</label>
-        </div>
-        <div class="cform-item">
-          <textarea id='m-textarea' className='ctextarea' class="" name="feedback" required/>
-          <label className='clabel'>Message:</label>
-        </div>
-        <button class="csubmit-btn" onClick={handleSubmit}>Send</button>  
+        <div className="search1">
+         
+          <input
+            type="text"
+            placeholder="Name"
+            required
+            name='name'
+            style={{ outline: "1px solid black", fontSize: "20px" }}
+          />
+        
+      </div>
+          {/* <input className='cinput' type="text" name="name" required/> */}
+      </div>
+      <div class="cform-item">
+        <div className="search1">
+         
+          <input
+            type="text"
+            placeholder="Email:"
+            name='email'
+            required
+            style={{ outline: "1px solid black", fontSize: "20px" }}
+          />
+        
+      </div>
+          {/* <input className='cinput' type="text" name="name" required/> */}
+      </div>
+      <div class="cform-item">
+        <div className="search1 search2">
+        <textarea id='m-textarea'   style={{ outline: "1px solid black", fontSize: "20px" }} className='ctextarea' placeholder='Message :' class="" name="feedback" required/>
+      
+        
+      </div>
+          {/* <input className='cinput' type="text" name="name" required/> */}
+      </div>
+        <button class="click-btn3" onClick={handleSubmit}>Send</button>  
       </form>
     </div>
   </div>
