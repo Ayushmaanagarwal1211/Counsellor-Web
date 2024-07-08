@@ -68,31 +68,44 @@ const Contact = () => {
 
   return (
     <main>
-    <nav className={`navbar ${fix ? "fixed" : ""}`}>
-        <div className="logo">
-          <img src={Logo} alt="Logo" />
+    <nav 
+    className={`navbar ${fix ? "fixed" : ""}`}>
+        <div 
+        className="logo">
+          <img 
+          src={Logo} 
+          alt="Logo" />
         </div>
-        <div className={`menu ${menuOpen ? "show" : ""}`}>
+        <div 
+        className={`menu ${menuOpen ? "show" : ""}`}>
           <ul>
             <li>
-              <a href="/topuniversities">Top Universities</a>
+              <a 
+              href="/topuniversities">Top Universities</a>
             </li>
             <li>
-              <a href="/jobs">Jobs</a>
+              <a 
+              href="/jobs">Jobs</a>
             </li>
             <li>
-              <a href="/courses">Courses</a>
+              <a 
+              href="/courses">Courses</a>
             </li>
             <li>
-              <a href="/careersupport">Career Support</a>
+              <a
+               href="/careersupport">Career Support</a>
             </li>
-            <li className="dot">
-              <a href="error">•</a>
+            <li 
+            className="dot">
+              <a 
+              href="error">•</a>
             </li>
          
             <li>
-              <a href="./profile">
-                <button className="profile_btn">Profile</button>
+              <a 
+              href="./profile">
+                <button 
+                className="profile_btn">Profile</button>
               </a>
             </li>
           </ul>
@@ -121,14 +134,21 @@ const Contact = () => {
             <div className={`bar ${menuOpen ? 'open' : ''}`}/>
           </div>
         </nav> */}
-    <div className='contact-page'>
+    <div 
+    className='contact-page'>
        
-      <section id="contact">
-  <div class="contact-box">
-    <div class="contact-clinks">
-      <h2 className='ch2'>CONTACT</h2>
-      <div class="clinks">
-        <div class="clink">
+      <section 
+      id="contact">
+  <div 
+  class="contact-box">
+    <div 
+    class="contact-clinks">
+      <h2 
+      className='ch2'>CONTACT</h2>
+      <div 
+      class="clinks">
+        <div 
+        class="clink">
           <FaLinkedin />
         </div>
         <div class="clink">
@@ -140,14 +160,17 @@ const Contact = () => {
         </div>
       </div>
     </div>
-    <div class="contact-form-wrapper">
-      <form id='form' ref={form}>
-        <div class="cform-item">
-        <div className="search1">
+    <div 
+    class="contact-form-wrapper">
+      <form 
+      id='form' 
+      ref={form}>
+        <div 
+        class="cform-item">
+        <div 
+        className="search1">
          
-          <input
-            type="text"
-            placeholder="Name"
+          <input type="text" placeholder="Name"
             required
             name='name'
             style={{ outline: "1px solid black", fontSize: "20px" }}
@@ -156,8 +179,10 @@ const Contact = () => {
       </div>
           {/* <input className='cinput' type="text" name="name" required/> */}
       </div>
-      <div class="cform-item">
-        <div className="search1">
+      <div 
+      class="cform-item">
+        <div 
+        className="search1">
          
           <input
             type="text"
@@ -170,15 +195,19 @@ const Contact = () => {
       </div>
           {/* <input className='cinput' type="text" name="name" required/> */}
       </div>
-      <div class="cform-item">
-        <div className="search1 search2">
+      <div 
+      class="cform-item">
+        <div 
+        className="search1 search2">
         <textarea id='m-textarea'   style={{ outline: "1px solid black", fontSize: "20px" }} className='ctextarea' placeholder='Message :' class="" name="feedback" required/>
       
         
       </div>
           {/* <input className='cinput' type="text" name="name" required/> */}
       </div>
-        <button class="click-btn3" onClick={handleSubmit}>Send</button>  
+        <button
+         class="click-btn3"
+          onClick={handleSubmit}>Send</button>  
       </form>
     </div>
   </div>
