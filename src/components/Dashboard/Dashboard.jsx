@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useContext, useRef } from "react";
 import "./Dashboard.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom"; // Import Link from react-router-dom
 import Logo from "../../assets/logo.webp";
 import SearchIcon from "../../assets/search_icon.png"; // Correct import
 import { signOut } from "firebase/auth";
@@ -30,21 +30,30 @@ const Dashboard = () => {
   const totalPages = Math.ceil(filteredColleges.length / itemsPerPage);
 
   useEffect(() => {
+    
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        toast.success("Logged in! 🚀", {
-          className: "toast-message",
-        });
-      } else {
-        toast.success("Logged out!", {
-          className: "toast-message",
-        });
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
-      }
-    });
-    return () => unsubscribe();
+
+          if(localStorage.getItem('count')!=='false'){
+
+       
+
+          toast.success("Logged in! 🚀", {
+            className: "toast-message",
+          });
+          localStorage.setItem('count',false)
+        }
+        } else {
+          toast.success("Logged out!", {
+            className: "toast-message",
+          });
+
+          setTimeout(() => {
+            navigate("/");
+          }, 1000);
+        }
+      });
+      return () => unsubscribe();
   }, [navigate]);
 
   useEffect(() => {
@@ -156,7 +165,9 @@ const Dashboard = () => {
       </div>
       <nav className={`navbar ${fix ? "fixed" : ""}`}>
         <div className="logo">
-          <img src={Logo} alt="Logo" />
+          <Link to="/dashboard">
+            <img src={Logo} alt="Logo" />
+          </Link>
         </div>
         <div className={`menu ${menuOpen ? "show" : ""}`}>
           <ul>
@@ -171,9 +182,6 @@ const Dashboard = () => {
             </li>
             <li>
               <a href="./careersupport">Career Support</a>
-            </li>
-            <li className="dot">
-              <a href="error">•</a>
             </li>
             <li>
               <a href="/" onClick={handleSignOut}>

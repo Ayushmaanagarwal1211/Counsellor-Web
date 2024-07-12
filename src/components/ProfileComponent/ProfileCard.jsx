@@ -15,6 +15,7 @@ const ProfileCard = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedSkills, setSelectedSkills] = useState(JSON.parse(localStorage.getItem("skills")) || []);
   const [socialProfiles, setSocialProfiles] = useState([]);
+  const [resumeFile, setResumeFile] = useState(localStorage.getItem("resumeFile") || null);
 
   useEffect(() => {
     const storedProfiles = JSON.parse(localStorage.getItem("profiles")) || [];
@@ -34,7 +35,6 @@ const ProfileCard = () => {
           isActive: i === 9, // set 10th date as active for demonstration
         });
       }
-
       setDates(result);
     };
 
@@ -51,6 +51,9 @@ const ProfileCard = () => {
     localStorage.setItem("academicYear", academicYear);
     localStorage.setItem("avatar", avatar);
     localStorage.setItem("skills", JSON.stringify(selectedSkills));
+    if (resumeFile) {
+      localStorage.setItem("resumeFile", resumeFile);
+    }
     setIsEditing(false);
   };
 
@@ -68,6 +71,38 @@ const ProfileCard = () => {
         return prevSkills;
       }
     });
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setAvatar(reader.result);
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleResumeUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setResumeFile(reader.result);
+        localStorage.setItem("resumeFile", reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleViewResume = () => {
+    window.open(resumeFile, '_blank');
+  };
+
+  const handleDeleteResume = () => {
+    setResumeFile(null);
+    localStorage.removeItem("resumeFile");
   };
 
   return (
@@ -126,6 +161,28 @@ const ProfileCard = () => {
           <div className="about-info">
             <h3>Academic Year : </h3> <p>{academicYear}</p>
           </div>
+          <div className="about-info">
+            <h3>Resume : </h3>
+            {resumeFile ? (
+              <div>
+                <button onClick={handleViewResume}>View Resume</button>
+                <button onClick={handleDeleteResume}>Delete Resume</button>
+              </div>
+            ) : (
+              <div>
+                <input
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  onChange={handleResumeUpload}
+                  style={{ display: 'none' }}
+                  id="resume-upload"
+                />
+                <label htmlFor="resume-upload" className="upload-button">
+                  Upload Resume
+                </label>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="profile-summary">
@@ -154,7 +211,6 @@ const ProfileCard = () => {
               ))}
             </ul>
           </div>
-          
         </div>
       </div>
       {isEditing && (
@@ -185,6 +241,12 @@ const ProfileCard = () => {
                 onChange={(e) => setAcademicYear(e.target.value)}
               />
             </label>
+            
+            <div className="image-upload">
+              <h3>Upload Profile Picture:</h3>
+              <input type="file" accept="image/*" onChange={handleImageUpload} />
+            </div>
+
             <div className="avatar-selection">
               <h3>Select Avatar:</h3>
               <div className="avatar-options">
