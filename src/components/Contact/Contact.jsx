@@ -14,7 +14,9 @@ import { ThemeContext } from '../../App';
 
 const Contact = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-
+const name=useRef()
+const email=useRef()
+const message=useRef()
     const navigate = useNavigate();
     const handleThemeChange = useCallback(() => {
       toggleTheme();
@@ -43,7 +45,7 @@ const Contact = () => {
     //     }
     //   });
     // }, []);
-    function handleSubmit(e){
+   async  function handleSubmit(e){
       e.preventDefault();
       let params={
         name:name.current.value,
@@ -53,7 +55,6 @@ const Contact = () => {
      await  emailjs.send('service_kszura2',"template_u8shl9d",params ,{
         publicKey:"rSYpY_RsF76o4MgcA",
       })
-      console.log('sdsdsd')
     }
     const handleSignOut = () => {
       signOut(auth)
